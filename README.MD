@@ -1,6 +1,5 @@
 # Photoshop shadow to CSS
 
----------
 
 Well, this is a LESS mixin collection for people who need:
 
