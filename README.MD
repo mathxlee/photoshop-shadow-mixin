@@ -1,7 +1,5 @@
 # Photoshop shadow to CSS
 
-标签（空格分隔）： photoshop cs shadow text-shadow box-shadow
-
 ---------
 
 Well, this is a LESS mixin collection for people who need:
