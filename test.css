@@ -1,0 +1,20 @@
+.box {
+  display: inline-block;
+  width: 500px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 100px;
+  -webkit-box-shadow: 4.09576022px 2.86788218px 9.4px 0.6px rgba(118, 113, 113, 0.75) ;
+  -moz-box-shadow: 4.09576022px 2.86788218px 9.4px 0.6px rgba(118, 113, 113, 0.75) ;
+  -ms-box-shadow: 4.09576022px 2.86788218px 9.4px 0.6px rgba(118, 113, 113, 0.75) ;
+  -o-box-shadow: 4.09576022px 2.86788218px 9.4px 0.6px rgba(118, 113, 113, 0.75) ;
+  box-shadow: 4.09576022px 2.86788218px 9.4px 0.6px rgba(118, 113, 113, 0.75) ;
+}
+.box .text {
+  -webkit-text-shadow: 2.5px 4.33012702px 9.4px rgba(118, 113, 113, 0.75);
+  -moz-text-shadow: 2.5px 4.33012702px 9.4px rgba(118, 113, 113, 0.75);
+  -ms-text-shadow: 2.5px 4.33012702px 9.4px rgba(118, 113, 113, 0.75);
+  -o-text-shadow: 2.5px 4.33012702px 9.4px rgba(118, 113, 113, 0.75);
+  text-shadow: 2.5px 4.33012702px 9.4px rgba(118, 113, 113, 0.75);
+}

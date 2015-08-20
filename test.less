@@ -1,0 +1,18 @@
+@import 'photoshop-drop-shadow-to-box-shadow.less';
+
+.box {
+	@height: 100px;
+	display: inline-block;
+	width: 500px;
+	height: @height;
+	margin: 10px;
+	text-align: center;
+	line-height: @height;
+
+	@hasinset: false;
+	.photoshop-drop-shadow(145deg, 5px, 6%, 10px, rgba(118, 113, 113, .75), @hasinset);
+
+	.text {
+		.photoshop-text-shadow(120deg, 5px, 6%, 10px, rgba(118, 113, 113, .75));
+	}
+}

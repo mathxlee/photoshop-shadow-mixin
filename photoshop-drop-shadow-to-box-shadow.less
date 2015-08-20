@@ -1,0 +1,99 @@
+@default-angle: 120deg;
+
+// =================================================
+//
+// photoshop drop shadow
+//
+// =================================================
+.photoshop-drop-shadow (@angle: @default-angle, @distance: 0, @spread: 0, @size: 0, @color: #000, @inner: false, @type: 'box') {
+
+	// ======== to get the angle ========
+	.getAngle () when (isunit(@angle, 'deg')) {
+		@_angle: ((180 - (@angle/1deg)) * pi() / 180);
+	}
+	.getAngle () when not (isunit(@angle, 'deg')) {
+		@_angle: @angle * 1deg;
+	}
+	.getAngle();
+
+	// ======== to get the spread ========
+	.getSpread () when (isunit(@spread, '%')) {
+		@_spread: @spread / 1%;
+	}
+	.getSpread () when (@spread < 0) {
+		@_spread: @spread * 100;
+	}
+	.getSpread();
+
+	// ======== to get the inset ========
+	.getInset () when (@inner = true) {
+		@inset: ~'inset';
+	}
+	.getInset () when (@inner = false) {
+		@inset: ~'';
+	}
+	.getInset();
+
+  @h-shadow: unit(unit(cos(@_angle) * @distance), px);
+  @v-shadow: unit(unit(sin(@_angle) * @distance), px);
+  @css-spread: @size * (@_spread / 100);
+  @blur: @size - @css-spread;
+
+	// ======== box/text shadow ========
+	.shadow (@h-shadow, @v-shadow, @blur, @css-spread, @color, @inset: ~'') when (@type = 'box') {
+		-webkit-box-shadow: @h-shadow @v-shadow @blur @css-spread @color @inset;
+		   -moz-box-shadow: @h-shadow @v-shadow @blur @css-spread @color @inset;
+		    -ms-box-shadow: @h-shadow @v-shadow @blur @css-spread @color @inset;
+		     -o-box-shadow: @h-shadow @v-shadow @blur @css-spread @color @inset;
+		        box-shadow: @h-shadow @v-shadow @blur @css-spread @color @inset;
+	}
+	.shadow (@h-shadow, @v-shadow, @blur, @css-spread, @color, @inset: ~'') when (@type = 'text') {
+		-webkit-text-shadow: @h-shadow @v-shadow @blur @color;
+		   -moz-text-shadow: @h-shadow @v-shadow @blur @color;
+		    -ms-text-shadow: @h-shadow @v-shadow @blur @color;
+		     -o-text-shadow: @h-shadow @v-shadow @blur @color;
+		        text-shadow: @h-shadow @v-shadow @blur @color;
+	}
+  .shadow (@h-shadow, @v-shadow, @blur, @css-spread, @color, @inset);
+}
+
+// =================================================
+//
+// photoshop inner shadow
+//
+// =================================================
+.photoshop-inner-shadow (@angle: @default-angle, @distance: 0, @spread: 0, @size: 0, @color: #000) {
+  .photoshop-drop-shadow(@angle, @distance, @spread, @size, @color, true);
+}
+
+// =================================================
+//
+// photoshop text shadow
+//
+// =================================================
+.photoshop-text-shadow (@angle: @default-angle, @distance: 0, @spread: 0, @size: 0, @color: #000) {
+  // NOTICE: @spread won't work in text shadows
+  .photoshop-drop-shadow(@angle, @distance, @spread, @size, @color, false, 'text');
+}
+
+// =================================================
+//
+// photoshop outer glow
+//
+// =================================================
+.photoshop-outer-glow (@choke: 0, @size: 0, @color: #fff) {
+  // NOTICE: current is experimantal
+  // 				 noise, technique, source: center, and quality are not supported
+  .photoshop-drop-shadow(0, 0, @choke, @size, @color, @inner);
+}
+
+// =================================================
+//
+// photoshop inner glow
+//
+// =================================================
+.photoshop-inner-glow (@choke: 0, @size: 0, @color: #fff) {
+  // NOTICE: current is experimantal
+  // 				 noise, technique, source: center, and quality are not supported
+  .photoshop-drop-shadow(@choke, @size, @color, true);
+}
